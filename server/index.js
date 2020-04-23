@@ -7,20 +7,20 @@ app.use(express.json());
 
  app.get("/api", (req, res) => {
    console.log("root is accessed");
-   res.send({res:"result from server"});
+   res.send({res:"result from  server"});
  });
 
-//Slide 3- register to the simulations
+//Slide 3- register to  the system
 
  app.post("/api/users/register", (req, res) => {
-   console.log(" users register is accessed");
+   console.log(" users register to the -  system");
    res.sendStatus(201);
  });
 
 //Slide 13 -- Allows the other players to join the game (with the UUID)
 
  app.get("/api/simulations/join", (req, res) => {
-   console.log("simulation login is accessed");
+   console.log("simulation  login is accessed");
    res.sendStatus(200);
  });
 
@@ -32,21 +32,27 @@ app.use(express.json());
      [{
     simulationName:"simulationName",
     simulationDescription:"simulationDescription",
-    simulationTime:"simulationTime"
+    simulationTime:"simulationTime",
+    numberOfParticipants:"numberOfParticipants",
+
       },
   {
     simulationName:"1simulationName",
     simulationDescription:"1simulationDescription",
-    simulationTime:"1simulationTime"
+    simulationTime:"1simulationTime",
+    numberOfParticipants:"1numberOfParticipants"
   },]);
   });
 
 //Slide 11-- When the manager selects the simulation
+// --- All info app.get would return, so that the client can use it to render the next screen.
 
-  app.post("/api/simulationInstance", (req, res) => {
+  app.get("/api/simulation/:id", (req, res) => {
     console.log("simulationInstance - Created UUID");
     res.sendStatus(201);
   });
+
+
 
 //Slide 11 Details of the selected simulation
 
@@ -55,18 +61,19 @@ app.use(express.json());
     res.send({
       simulationName:"simulationName1",
       simulationDescription:"simulationDescription1",
-      simulationTime:"simulationTime1"
+      simulationTime:"simulationTime1",
+      numberOfParticipants:"numberOfParticipants"
   
     });
   });
 
-//Slide 12-- UpdateRole for simulation
+//Slide 12-- UpdateRole for simulation - role to user
 
   app.put("/api/simulation/:id/UpdateUser", (req, res) => {
     console.log("simulation Update Role");
     res.send({
-      user1:"user1",
-      user2:"user2",
+      Role1:"user1",
+      Role2:"user2",
     });
   });
 
