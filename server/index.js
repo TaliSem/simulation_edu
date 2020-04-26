@@ -62,21 +62,17 @@ app.use(express.json());
 
 //Slide 12-- UpdateRole for simulation - role to user
 
-  app.put("/api/simulation/:id/UUID/UpdateUser", function (req, res, next) {
-    const queryUser =  req.body;
-    console.log(queryUser.role);
-    if (!queryUser.role)
-     next('route')
-    else next()
-  }, function (req, res, next) {
-    res.send(`The role updated - successfully`)
-  })
-  
- 
+  app.put("/api/simulation/:id/UUID/UpdateUser", (req, res) =>{
+    console.log("simulation Update Role");
+    res.send({
+      Role: "description of this role",
+    });
+  });
+   
   //--I added the role name in URL So we can change the sim description by role
 
-  app.get("/api/simulation/:id/UUID/UpdateUser/:roleName", (req, res) => {
-    console.log("simulation Update Role");
+  app.get("/api/simulation/:id/UUID/RoleAssignment", (req, res) => {
+    console.log("RoleAssignment");
     res.send({
       Role1:"user1",
       Role2:"user2",
@@ -88,7 +84,13 @@ app.use(express.json());
 
   app.get("/api/simulations/:id/join", (req, res) => {
    console.log("simulation login is accessed");
-    res.sendStatus(200);
+    res.sendStatus({
+      simulationName:"simulationName",
+      simulationDescription:"simulationDescription",
+      simulationTime:"simulationTime",
+      numberOfParticipants:"numberOfParticipants",
+      roleAssignemnt: { Role1:"user1", Role2:"user2", Role3:"user3"}
+    });
   });
 
 //Slide 16-- Start simulation
@@ -111,7 +113,6 @@ app.use(express.json());
     console.log("simulation Stop is accessed");
     res.sendStatus(200);
   });
-
 
 
 const PORT = process.env.PORT || 5000;
