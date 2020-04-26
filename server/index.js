@@ -22,21 +22,20 @@ app.use(express.json());
  app.get("/api/simulation", (req, res) => {
    console.log("simulation list is accessed");
    res.send(
-     [{
-    id:1,
-    simulationName:"simulationName",
-    simulationDescription:"simulationDescription",
-    simulationTime:"simulationTime",
-    numberOfParticipants:"numberOfParticipants",
-
-      },
-  {
-    id:2,
-    simulationName:"1simulationName",
-    simulationDescription:"1simulationDescription",
-    simulationTime:"1simulationTime",
-    numberOfParticipants:"1numberOfParticipants"
-  },]);
+    [{
+     id:1,
+     simulationName:"simulationName",
+     simulationDescription:"simulationDescription",
+     simulationTime:"simulationTime",
+     numberOfParticipants:"numberOfParticipants",
+    },
+    {
+     id:2,
+     simulationName:"1simulationName",
+     simulationDescription:"1simulationDescription",
+     simulationTime:"1simulationTime",
+     numberOfParticipants:"1numberOfParticipants"
+    }]);
   });
 
 //Slide 11-- When the manager selects the simulation
