@@ -1,6 +1,7 @@
 console.log("app is loading");
 const express = require("express");
 const app = express();
+const routeHelper = require("./routeHelper.js");
 
 // used for json inside body 
 app.use(express.json());
@@ -41,22 +42,16 @@ app.use(express.json());
 //Slide 11-- When the manager selects the simulation
 // --- All info app.get would return, so that the client can use it to render the next screen.
 
-  app.get("/api/simulation/:id/createNew", (req, res) => {
+  app.post("/api/simulation/:id/createNew", (req, res) => {
     console.log("simulationInstance - Created UUID");
-    res.send({res:"UUID"});
+    routeHelper.createNew(req, res);
   });
 
 //Slide 11 Details of the selected simulation
 
   app.get("/api/simulation/:id", (req, res) => {
-    console.log("simulation- get simulation simulation by id");
-    res.send({
-      id:1,
-      simulationName:"simulationName",
-      simulationDescription:"simulationDescription",
-      simulationTime:"simulationTime",
-      numberOfParticipants:"numberOfParticipants"
-    });
+    routeHelper.handleGet(req, res);
+    console.log("result from server"); 
   });
 
 //Slide 12-- UpdateRole for simulation - role to user
