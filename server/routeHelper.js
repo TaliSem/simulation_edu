@@ -57,7 +57,7 @@ console.log(simulationInstance)
             return res.sendStatus(500);
             }
             if(!uuidFound){
-              console.log(filter)
+              console.log(filter )
               return  res.status(404).send(filter);
             }
 
