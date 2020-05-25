@@ -5,10 +5,8 @@ const my_db = "edusim";
 const CategoriesName = "simulation";
 const ObjectId= require("mongodb").ObjectID;
 const { v4: uuidv4 } = require('uuid');
- console.log(uuidv4())
 
 function createNew(req, res) {
-    console.log('createNew UUID is accessed');
     console.log(req.params.id);
   MongoClient.connect(url, function(err, db) {
     if (err) {
